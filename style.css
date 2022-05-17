@@ -1,0 +1,404 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    font-family: "Poppins", sans-serif;
+    color: #444;
+    background-color: #f3f3f3;
+    /* height: 100vh;
+    padding: 2rem; */
+  }
+}
+
+/* MAIN */
+.app {
+  position: fixed;
+  grid-area: auto;
+  max-width: 100rem;
+
+  display: grid;
+  grid-template-columns: 2fr 0fr;
+  grid-template-rows: auto repeat(4, 13rem) auto;
+  gap: 0rem;
+  /* width: 0%; */
+
+  /* NOTE This creates the fade in/out anumation */
+  opacity: 100;
+  transition: all 1s;
+}
+
+.balance {
+  width: 39rem;
+  grid-column: 1 / 1;
+  display: flexbox;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* margin-bottom: 2rem; */
+  /* margin-left: 0; */
+  /* margin-top: 0; */
+}
+
+.balance__label {
+  font-size: 2.2rem;
+  font-weight: 500;
+  /* margin-bottom: -0.2rem; */
+  /* margin-top: 1rem; */
+}
+
+.balance__date {
+  font-size: 1.4rem;
+  color: #888;
+  margin-left: 47%;
+  /* scroll-margin-right: ; */
+}
+
+.balance__value {
+  font-size: 3rem;
+  font-weight: 400;
+  align-items: center;
+  align-content: center;
+}
+
+/* MOVEMENTS */
+.movements {
+  grid-row: 3 / 6;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: scroll;
+  width: 40rem;
+}
+
+.movements__row {
+  padding: 2.25rem 4rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+/* This movement types is whether is deposit or withdrawl */
+.movements__type {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 10rem;
+  margin-right: 2rem;
+}
+
+.movements__date {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #666;
+}
+/* this movements is the type of where you spend or get money from */
+.movements_types {
+  font-size: 1.1rem;
+  /* text-transform: uppercase; */
+  font-weight: 500;
+  color: rgb(20, 19, 19);
+  margin-left: 1rem;
+}
+
+.movements__type--deposit {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+
+.movements__type--withdrawal {
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+
+.movements__value {
+  font-size: 1.7rem;
+  margin-left: auto;
+}
+
+/* SUMMARY */
+.summary {
+  grid-row: 8/10;
+  grid-column: 1 / 6;
+  display: flex;
+  align-items: baseline;
+  padding: 0 0.3rem;
+  margin-top: 1rem;
+}
+
+.summary__label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-right: 0.8rem;
+}
+
+.summary__value {
+  font-size: 2.2rem;
+  margin-right: 2.5rem;
+}
+
+.summary__value--in,
+.summary__value--interest {
+  color: #66c873;
+}
+
+.summary__value--out {
+  color: #f5465d;
+}
+
+/* OPERATIONS */
+.operation {
+  grid-row: 2 / span 1;
+  border-radius: 1rem;
+  padding: 0.1rem 1rem;
+  color: #333;
+  /* width: 40rem; */
+  /* margin-top: 10px;
+  margin-left: 10px; */
+}
+
+.operation--transfer {
+  height: 10rem;
+  width: 40rem;
+  grid-row: 2/2;
+  grid-column: 1 / 6;
+  background-image: linear-gradient(to top left, #618577, #97eb48);
+  margin-top: 2rem;
+  /* margin-left: 10px; */
+}
+
+.operation--delete {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  height: 10rem;
+  width: 18rem;
+  grid-row: 10 / 10;
+  grid-column: 1 / 2;
+  background-image: linear-gradient(to top left, #f55353, #cc7979);
+}
+
+.operation--deleteAll {
+  margin-left: 20rem;
+  margin-top: 2rem;
+  height: 10rem;
+  width: 18rem;
+  grid-row: 10 / 10;
+  grid-column: 1 / 1;
+  background-image: linear-gradient(to top left, #f55353, #cc7979);
+  /* height: auto;
+  width: auto; */
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 0.1rem;
+  margin-left: 0.1rem;
+}
+
+/* Exceptions for interst */
+.form.form--delete {
+  grid-template-columns: 2.5fr 1fr 2.5fr;
+}
+.form__label--delete {
+  grid-row: 2;
+}
+/* End exceptions */
+
+.form__input {
+  width: 10rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: inherit;
+  font-size: 1.5rem;
+  /* text-align: center; */
+  /* margin-left: 10px; */
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+  gap: 1px;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.form__label {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.form__btn {
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 2.5rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form__btn--delete {
+  width: 5rem;
+  margin-left: 1rem;
+}
+
+.form__btn--deleteAll {
+  text-align: center;
+  margin-left: 4.2rem;
+  width: 7rem;
+}
+.form__btn:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Deleting all button */
+.confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  box-sizing: border-box;
+
+  opacity: 0;
+  animation-name: confirm---open;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm--close {
+  animation-name: confirm---close;
+}
+
+.confirm__window {
+  width: 80%;
+  max-width: 600px;
+  background: white;
+  font-size: 14px;
+  font-family: "Noto Sans", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transform: scale(0.75);
+  animation-name: confirm__window---open;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.2s;
+}
+
+.confirm__titlebar,
+.confirm__content,
+.confirm__buttons {
+  padding: 1.25em;
+}
+
+.confirm__titlebar {
+  /* background: #222222; */
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confirm__title {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.confirm__close {
+  background: none;
+  outline: none;
+  border: none;
+  transform: scale(2.5);
+  color: #ffffff;
+  transition: color 0.15s;
+}
+
+.confirm__close:hover {
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.confirm__content {
+  line-height: 1.8em;
+}
+
+.confirm__buttons {
+  background: #eeeeee;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.confirm__button {
+  padding: 0.4em 0.8em;
+  border: 2px solid #009879;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #009879;
+  font-weight: bold;
+  font-size: 1.1em;
+  font-family: "Noto Sans", sans-serif;
+  margin-left: 0.6em;
+  cursor: pointer;
+  outline: none;
+}
+
+.confirm__button--fill {
+  background: #009879;
+  color: #ffffff;
+}
+
+.confirm__button:focus {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes confirm---open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confirm---close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes confirm__window---open {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
